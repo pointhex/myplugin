@@ -8,8 +8,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_CXX_STANDARD 17)
 
 find_package(QtCreator REQUIRED COMPONENTS Core)
-find_package(QT NAMES Qt6 REQUIRED COMPONENTS Widgets)
-set(QtX Qt${QT_VERSION_MAJOR})
+find_package(Qt6 COMPONENTS Widgets REQUIRED)
 
 # Add a CMake option that enables building your plugin with tests.
 # You don't want your released plugin binaries to contain tests,
@@ -19,10 +18,10 @@ option(WITH_TESTS "Builds with tests" NO)
 
 if(WITH_TESTS)
   # Look for QtTest
-  find_package(${QtX} REQUIRED COMPONENTS Test)
+  find_package(Qt6 COMPONENTS Test REQUIRED)
 
   # Tell CMake functions like add_qtc_plugin about the QtTest component.
-  set(IMPLICIT_DEPENDS Qt::Test)
+  set(IMPLICIT_DEPENDS Qt6::Test)
 
   # Enable ctest for auto tests.
   enable_testing()
@@ -32,7 +31,7 @@ add_qtc_plugin(Myplugin
   PLUGIN_DEPENDS
     QtCreator::Core
   DEPENDS
-    ${QtX}::Widgets
+    Qt6::Widgets
     QtCreator::ExtensionSystem
     QtCreator::Utils
   SOURCES
