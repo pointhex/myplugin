@@ -30,6 +30,7 @@ if(WITH_TESTS)
 endif()
 
 add_qtc_plugin(Myplugin
+  SKIP_TRANSLATION
   PLUGIN_DEPENDS
     QtCreator::Core
   DEPENDS
@@ -37,12 +38,7 @@ add_qtc_plugin(Myplugin
     QtCreator::ExtensionSystem
     QtCreator::Utils
   SOURCES
-    .github/workflows/build_cmake.yml
-    .github/workflows/README.md
-    README.md
     myplugin.cpp
-    myplugin.h
-    myplugin_global.h
     mypluginconstants.h
     myplugintr.h
 )

@@ -1,4 +1,3 @@
-#include "myplugin.h"
 #include "mypluginconstants.h"
 #include "myplugintr.h"
 
@@ -15,6 +14,23 @@
 #include <QMessageBox>
 
 namespace Myplugin::Internal {
+
+class MypluginPlugin : public ExtensionSystem::IPlugin
+{
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "Myplugin.json")
+
+public:
+    MypluginPlugin();
+    ~MypluginPlugin() final;
+
+    void initialize() final;
+    void extensionsInitialized() final;
+    ShutdownFlag aboutToShutdown() final;
+
+private:
+    void triggerAction();
+};
 
 MypluginPlugin::MypluginPlugin()
 {
