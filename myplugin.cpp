@@ -8,6 +8,8 @@
 #include <coreplugin/icontext.h>
 #include <coreplugin/icore.h>
 
+#include <extensionsystem/iplugin.h>
+
 #include <QAction>
 #include <QMainWindow>
 #include <QMenu>
