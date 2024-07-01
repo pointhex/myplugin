@@ -92,3 +92,5 @@ void MypluginPlugin::triggerAction()
 }
 
 } // namespace Myplugin::Internal
+
+#include <mypluginplugin.moc>
