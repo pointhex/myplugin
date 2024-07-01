@@ -5,6 +5,7 @@ on: [push]
 env:
   PLUGIN_NAME: Myplugin
   QT_VERSION: 6.7.1
+  MACOS_DEPLOYMENT_TARGET: 11.7
   QT_CREATOR_VERSION: 13.0.2
   QT_CREATOR_SNAPSHOT: NO
   CMAKE_VERSION: 3.21.1
@@ -202,7 +203,7 @@ jobs:
       run: |
         set(ENV{CC} ${{ matrix.config.cc }})
         set(ENV{CXX} ${{ matrix.config.cxx }})
-        set(ENV{MACOSX_DEPLOYMENT_TARGET} "10.13")
+        set(ENV{MACOSX_DEPLOYMENT_TARGET} "${{ env.MACOS_DEPLOYMENT_TARGET }}")
 
         if ("${{ runner.os }}" STREQUAL "Windows" AND NOT "x${{ matrix.config.environment_script }}" STREQUAL "x")
           execute_process(
